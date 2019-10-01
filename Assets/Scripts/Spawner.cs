@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour
 {
     public GameObject[] _obstraction;
     public GameObject _coin;
+
     private bool _spawnerIsBusy;
     private Vector2 _spawnPosition;
     private int _coinCount;
@@ -13,18 +14,21 @@ public class Spawner : MonoBehaviour
     private float _timeBetweanSpawnObstruction;
     private Vector3 _lastSpawnPositionObstruction = new Vector3();
     private Vector3 _lastSpawnPositionCoin = new Vector3();
+
     void Start()
     {
         _spawnerIsBusy = false;
         _timeBetweanSpawnCoin = 3.0f;
         _timeBetweanSpawnObstruction = 3.0f;
     }
+
     void Update()
     {
         _spawnPosition = transform.position;
         ObstractionSpawner();
         CoinSpawner();
     }
+
     private void CoinSpawner()
     {
         _timeBetweanSpawnCoin -= Time.deltaTime;
@@ -47,6 +51,7 @@ public class Spawner : MonoBehaviour
             _timeBetweanSpawnCoin = 3.0f;
         }
     }
+
     private void ObstractionSpawner()
     {
         _timeBetweanSpawnObstruction -= Time.deltaTime;

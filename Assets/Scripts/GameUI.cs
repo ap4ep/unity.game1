@@ -1,29 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
-    public Text _text;
-    public GameObject Panel;
-
-    private GameObject _player;
-
-    private void Start()
+    [SerializeField] private Text _text;
+    [SerializeField] private GameObject _panel;
+    [SerializeField] private PlayerController _player;
+    
+    public void ShowCoins()
     {
-        _player = GameObject.FindWithTag("Player");
-    }
-    void Update()
-    {
-        _text.text = _player.GetComponent<PlayerController>().CoinCount.ToString();
+        _text.text = _player.Coins.ToString();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (_player.GetComponent<PlayerController>())
         {
-            Panel.SetActive(true);
+            _panel.SetActive(true);
             Time.timeScale = 0f;
         }
     }
