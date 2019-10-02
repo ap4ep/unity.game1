@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class GroundChecker : MonoBehaviour
 {
-    [SerializeField] private GameObject CheckPoint;
-    [SerializeField] private float Radius;
-    [SerializeField] private LayerMask WhatIsGround;
+    [SerializeField] private GameObject _сheckPoint;
+    [SerializeField] private float _radius;
+    [SerializeField] private LayerMask _whatIsGround;
 
     public bool CheckGround()
     {
-        return Physics2D.OverlapCircle(CheckPoint.transform.position, Radius, WhatIsGround);
+        return Physics2D.OverlapCircle(_сheckPoint.transform.position, _radius, _whatIsGround);
     }
 }
