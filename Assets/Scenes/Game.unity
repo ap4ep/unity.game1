@@ -241,7 +241,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 727107364}
-  Panel: {fileID: 1610600747}
+  _panel: {fileID: 1610600747}
+  _player: {fileID: 1697109693}
 --- !u!1 &304011041 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2202648630393255916, guid: 8645a0f5dbe846a4bae22a67d2144035,
@@ -303,8 +304,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee5c120de32f56e48910ea4aa146aa1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 1697109697}
-  smooth: 1.5
+  _player: {fileID: 1697109697}
+  _smooth: 1.5
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1042,6 +1043,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8bd05062328144d888b3a17ea435d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CoinCollected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 275559826}
+        m_MethodName: ShowCoins
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!50 &1697109694
 Rigidbody2D:
   serializedVersion: 4
@@ -1263,6 +1280,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2202648630393255916, guid: 8645a0f5dbe846a4bae22a67d2144035,
+        type: 3}
+      propertyPath: m_Name
+      value: USD
+      objectReference: {fileID: 0}
     - target: {fileID: 2274726326263387208, guid: 8645a0f5dbe846a4bae22a67d2144035,
         type: 3}
       propertyPath: m_BodyType
@@ -1282,11 +1304,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.x
       value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2202648630393255916, guid: 8645a0f5dbe846a4bae22a67d2144035,
-        type: 3}
-      propertyPath: m_Name
-      value: USD
       objectReference: {fileID: 0}
     - target: {fileID: 2202648630393255912, guid: 8645a0f5dbe846a4bae22a67d2144035,
         type: 3}

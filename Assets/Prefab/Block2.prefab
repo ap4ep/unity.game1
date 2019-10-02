@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2504286141352315768}
   - component: {fileID: 5261814241261599212}
   - component: {fileID: 4467904308685342008}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: block (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1181620194388654272}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Block2
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 7797313901419704792}
   - component: {fileID: 4695351921937337055}
   - component: {fileID: 7678048911928646838}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: block (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 7194559034235859281}
   - component: {fileID: 5655938040001657065}
   - component: {fileID: 8302989699184507948}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: block
   m_TagString: Ground
   m_Icon: {fileID: 0}

@@ -8,9 +8,9 @@ public class PlayerController : MonoBehaviour
     public int Coins => _coins;
     public UnityEvent CoinCollected;
 
+    private GroundChecker _groundChecker;
     private float _speed = 4f;
     private float _jumpForce = 10f;
-    private bool _isGrounded = false;
     private Rigidbody2D _rigidbody;
     private float _horizontalMove;
     private int _coins;
@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _groundChecker = GetComponent<GroundChecker>();
         _coins = 0;
     }
 
@@ -31,7 +32,7 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
-        if (_isGrounded)
+        if (_groundChecker.CheckGround())
         {
             _horizontalMove = Input.GetAxis("Horizontal");
             _rigidbody.velocity = new Vector2(_horizontalMove * _speed, _rigidbody.velocity.y);
@@ -40,18 +41,9 @@ public class PlayerController : MonoBehaviour
 
     private void JumpPlayer()
     {
-        if (_isGrounded)
+        if (_groundChecker.CheckGround())
         {
             _rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
-            _isGrounded = false;
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            _isGrounded = true;
         }
     }
 
