@@ -10,9 +10,9 @@ public class GameUI : MonoBehaviour
     [SerializeField] private GameObject _panel;
     [SerializeField] private PlayerController _player;
     
-    public void ShowCoins()
+    public void ShowCoins(int coins)
     {
-        _text.text = _player.Coins.ToString();
+        _text.text = coins.ToString();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

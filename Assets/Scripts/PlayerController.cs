@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-    public int Coins => _coins;
-    public UnityEvent CoinCollected;
+    [System.Serializable]
+    public class CoinEvent : UnityEvent<int> { };
+    public CoinEvent CoinCollected;
 
     private GroundChecker _groundChecker;
     private float _speed = 4f;
@@ -52,7 +54,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Coin"))
         {
             _coins++;
-            CoinCollected.Invoke();
+            CoinCollected.Invoke(_coins);
             Destroy(collision.gameObject);
         }
     }

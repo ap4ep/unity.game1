@@ -29,22 +29,12 @@ public class Spawner : MonoBehaviour
 
         if (!_spawnerIsBusy && _timeBetweanSpawn <= 0)
         {
-            int _objectCount;
             _spawnerIsBusy = true;
             Vector2 _positionBetweanSpawn = transform.position - _lastSpawnPosition;
 
-            if (_gameObjects.Length == 1)
-            {
-                _objectCount = Random.Range(3, 8);
-            }
-            else
-            {
-                _objectCount = 1;
-            }
-
             if (_positionBetweanSpawn.x > 10)
             {
-                for (int i = 0; i < _objectCount; i++)
+                for (int i = 0; i < GetObjectCount(_gameObjects); i++)
                 {
                     _spawnPosition.x += 1;
                     _spawnPosition.y = _spawnPositionY;
@@ -56,5 +46,13 @@ public class Spawner : MonoBehaviour
             _spawnerIsBusy = false;
             _timeBetweanSpawn = 3.0f;
         }
+    }
+
+    private int GetObjectCount(GameObject[] _gameObjects)
+    {
+        if (_gameObjects.Length == 1)
+            return Random.Range(3, 8);
+        else
+            return 1;
     }
 }

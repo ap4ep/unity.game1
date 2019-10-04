@@ -20,7 +20,7 @@ public class MenuUI : MonoBehaviour
 
     public void ShowCreator()
     {
-        AnimatorAbout.SetBool("IsOpen", !AnimatorAbout.GetBool("IsOpen"));
+        AnimatorAbout.SetBool("IsOpen", true);
     }
 
     public void Exit()
