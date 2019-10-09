@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class CameraTracking : MonoBehaviour
 {
-
-    [SerializeField] private Transform _player;
-    [SerializeField] private float _smooth = 1.5f;
+    [SerializeField] private Transform _target;
+    [SerializeField] private float _speed = 1.5f;
 
     void Update()
     {
-        Vector3 destPoint = new Vector3(_player.position.x, transform.position.y, -100);
-        transform.position = Vector3.Lerp(transform.position, destPoint, _smooth * Time.deltaTime);
+        Vector3 destinationPoint = new Vector3(_target.position.x, transform.position.y, -100);
+        transform.position = Vector3.Lerp(transform.position, destinationPoint, _speed * Time.deltaTime);
     }
 }

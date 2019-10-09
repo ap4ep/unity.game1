@@ -6,21 +6,16 @@ using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
-    [SerializeField] private Text _text;
-    [SerializeField] private GameObject _panel;
-    [SerializeField] private PlayerController _player;
-    
-    public void ShowCoins(int coins)
+    [SerializeField] private Text _coinText;
+    [SerializeField] private PlayerController _playerController;
+
+    private void Start()
     {
-        _text.text = coins.ToString();
+        _playerController.OnCoinCollect += ShowCoins;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void ShowCoins(int coins)
     {
-        if (_player.GetComponent<PlayerController>())
-        {
-            _panel.SetActive(true);
-            Time.timeScale = 0f;
-        }
+        _coinText.text = coins.ToString();
     }
 }

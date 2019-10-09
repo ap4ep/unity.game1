@@ -1,27 +1,25 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(GroundChecker))]
 public class PlayerController : MonoBehaviour
 {
-    [System.Serializable]
-    public class CoinEvent : UnityEvent<int> { };
-    public CoinEvent CoinCollected;
-
+    public event Action<int> OnCoinCollect;
     private GroundChecker _groundChecker;
+    private Rigidbody2D _rigidbody;
     private float _speed = 4f;
     private float _jumpForce = 10f;
-    private Rigidbody2D _rigidbody;
     private float _horizontalMove;
-    private int _coins;
+    private int _coins = 0;
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _groundChecker = GetComponent<GroundChecker>();
-        _coins = 0;
     }
 
     private void Update()
@@ -54,7 +52,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Coin"))
         {
             _coins++;
-            CoinCollected.Invoke(_coins);
+            OnCoinCollect(_coins);
             Destroy(collision.gameObject);
         }
     }

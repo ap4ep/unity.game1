@@ -2,20 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public abstract class Spawner : MonoBehaviour
 {
-    public GameObject[] _gameObjects;
-
-    private bool _spawnerIsBusy;
-    [SerializeField] private float _timeBetweanSpawn;
+    [SerializeField] private GameObject[] _gameObjects;
+    [SerializeField] private float _timeBetweanSpawn = 3.0f;
     [SerializeField] private float _spawnPositionY;
+
     private Vector2 _spawnPosition;
     private Vector3 _lastSpawnPosition = new Vector3();
-
-    void Start()
-    {
-        _spawnerIsBusy = false;
-    }
 
     void Update()
     {
@@ -27,9 +21,8 @@ public class Spawner : MonoBehaviour
     {
         _timeBetweanSpawn -= Time.deltaTime;
 
-        if (!_spawnerIsBusy && _timeBetweanSpawn <= 0)
+        if (_timeBetweanSpawn <= 0)
         {
-            _spawnerIsBusy = true;
             Vector2 _positionBetweanSpawn = transform.position - _lastSpawnPosition;
 
             if (_positionBetweanSpawn.x > 10)
@@ -42,17 +35,9 @@ public class Spawner : MonoBehaviour
                     _lastSpawnPosition = transform.position;
                 }
             }
-
-            _spawnerIsBusy = false;
             _timeBetweanSpawn = 3.0f;
         }
     }
 
-    private int GetObjectCount(GameObject[] _gameObjects)
-    {
-        if (_gameObjects.Length == 1)
-            return Random.Range(3, 8);
-        else
-            return 1;
-    }
+    public abstract int GetObjectCount(GameObject[] _gameObjects);
 }
