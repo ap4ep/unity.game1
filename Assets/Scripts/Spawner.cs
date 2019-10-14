@@ -27,7 +27,7 @@ public abstract class Spawner : MonoBehaviour
 
             if (_positionBetweanSpawn.x > 10)
             {
-                for (int i = 0; i < GetObjectCount(_gameObjects); i++)
+                for (int i = 0; i < GetObjectCount(); i++)
                 {
                     _spawnPosition.x += 1;
                     _spawnPosition.y = _spawnPositionY;
@@ -39,5 +39,5 @@ public abstract class Spawner : MonoBehaviour
         }
     }
 
-    public abstract int GetObjectCount(GameObject[] _gameObjects);
+    public abstract int GetObjectCount();
 }

@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 275559824}
   - component: {fileID: 275559823}
   - component: {fileID: 275559826}
+  - component: {fileID: 275559827}
   m_Layer: 0
   m_Name: Finish
   m_TagString: Finish
@@ -240,7 +241,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1833e70b379aad14db3144ed45fc73b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _text: {fileID: 727107364}
+  _coinText: {fileID: 727107364}
+  _playerController: {fileID: 1697109693}
+--- !u!114 &275559827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275559822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2a0dc1bf0c89cb46a0beec041f4af80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _panel: {fileID: 1610600747}
   _player: {fileID: 1697109693}
 --- !u!1 &304011041 stripped
@@ -304,8 +318,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee5c120de32f56e48910ea4aa146aa1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 1697109697}
-  _smooth: 1.5
+  _target: {fileID: 1697109697}
+  _speed: 1.5
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -663,7 +677,7 @@ GameObject:
   - component: {fileID: 1117184123}
   - component: {fileID: 1117184124}
   m_Layer: 0
-  m_Name: ObstractionSpawner
+  m_Name: BlockSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -692,15 +706,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1117184122}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3df9617cf1f75df46ad5715310de7e75, type: 3}
+  m_Script: {fileID: 11500000, guid: cd01c921abbaeb04cb04cbd10888eeb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _gameObjects:
   - {fileID: 2027811111190795005, guid: dbd29da50d36a3042b60b2974333b51e, type: 3}
   - {fileID: 4567585663638194611, guid: a2ed45e2c628a544e8f2efc00fc43683, type: 3}
   - {fileID: 4939205715464803581, guid: e5179fceb3540df42ac83d360a975b17, type: 3}
-  _timeBetweanSpawn: 5
-  _spawnPositionY: -3
+  _timeBetweanSpawn: 3
+  _spawnPositionY: -2
 --- !u!1 &1357852255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1094,22 +1108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8bd05062328144d888b3a17ea435d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CoinCollected:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 275559826}
-        m_MethodName: ShowCoins
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: PlayerController+CoinEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
 --- !u!50 &1697109694
 Rigidbody2D:
   serializedVersion: 4
@@ -1333,13 +1331,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1971984388}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3df9617cf1f75df46ad5715310de7e75, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b76779a95994bd43af6ea0396bc905c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _gameObjects:
   - {fileID: 2202648630393255916, guid: 8645a0f5dbe846a4bae22a67d2144035, type: 3}
   _timeBetweanSpawn: 3
-  _spawnPositionY: 5
+  _spawnPositionY: 3
 --- !u!1001 &2202648630090391757
 PrefabInstance:
   m_ObjectHideFlags: 0

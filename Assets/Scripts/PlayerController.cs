@@ -9,6 +9,7 @@ using UnityEngine.Events;
 public class PlayerController : MonoBehaviour
 {
     public event Action<int> OnCoinCollect;
+
     private GroundChecker _groundChecker;
     private Rigidbody2D _rigidbody;
     private float _speed = 4f;

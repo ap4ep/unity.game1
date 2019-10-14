@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BlockSpawner : Spawner
 {
-    public override int GetObjectCount(GameObject[] _gameObjects)
+    public override int GetObjectCount()
     {
         return 1;
     }
