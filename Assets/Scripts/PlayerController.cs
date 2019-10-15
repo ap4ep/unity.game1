@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private float _speed = 4f;
     private float _jumpForce = 10f;
-    private float _horizontalMove;
+    private float _horizontalInput;
     private int _coins = 0;
 
     private void Start()
@@ -26,21 +26,21 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         if (Input.GetButton("Horizontal"))
-            MovePlayer();
+            TryMove();
         if (Input.GetButtonDown("Jump"))
-            JumpPlayer();
+            TryJump();
     }
 
-    private void MovePlayer()
+    private void TryMove()
     {
         if (_groundChecker.CheckGround())
         {
-            _horizontalMove = Input.GetAxis("Horizontal");
-            _rigidbody.velocity = new Vector2(_horizontalMove * _speed, _rigidbody.velocity.y);
+            _horizontalInput = Input.GetAxis("Horizontal");
+            _rigidbody.velocity = new Vector2(_horizontalInput * _speed, _rigidbody.velocity.y);
         }
     }
 
-    private void JumpPlayer()
+    private void TryJump()
     {
         if (_groundChecker.CheckGround())
         {
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Coin"))
         {
             _coins++;
-            OnCoinCollect(_coins);
+            OnCoinCollect?.Invoke(_coins);
             Destroy(collision.gameObject);
         }
     }
