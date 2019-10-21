@@ -5,7 +5,6 @@ using UnityEngine;
 public abstract class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] _gameObjects;
-    [SerializeField] private float _timeBetweanSpawn = 3.0f;
     [SerializeField] private float _spawnPositionY;
 
     private Vector2 _spawnPosition;
@@ -19,23 +18,15 @@ public abstract class Spawner : MonoBehaviour
 
     private void SpawnObjects()
     {
-        _timeBetweanSpawn -= Time.deltaTime;
-
-        if (_timeBetweanSpawn <= 0)
+        if (Vector2.Distance(_lastSpawnPosition, transform.position) > 10)
         {
-            Vector2 _positionBetweanSpawn = transform.position - _lastSpawnPosition;
-
-            if (_positionBetweanSpawn.x > 10)
+            for (int i = 0; i < GetObjectCount(); i++)
             {
-                for (int i = 0; i < GetObjectCount(); i++)
-                {
-                    _spawnPosition.x += 1;
-                    _spawnPosition.y = _spawnPositionY;
-                    Instantiate(_gameObjects[Random.Range(0, _gameObjects.Length)], _spawnPosition, Quaternion.identity);
-                    _lastSpawnPosition = transform.position;
-                }
+                _spawnPosition.x += 1;
+                _spawnPosition.y = _spawnPositionY;
+                Instantiate(_gameObjects[Random.Range(0, _gameObjects.Length)], _spawnPosition, Quaternion.identity);
+                _lastSpawnPosition = transform.position;
             }
-            _timeBetweanSpawn = 3.0f;
         }
     }
 
