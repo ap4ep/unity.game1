@@ -8,7 +8,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(GroundChecker))]
 public class PlayerController : MonoBehaviour
 {
-    public event Action<int> CoinCollect;
+    public event Action<int> CoinCollected;
 
     private GroundChecker _groundChecker;
     private Rigidbody2D _rigidbody;
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Coin"))
         {
             _coins++;
-            CoinCollect?.Invoke(_coins);
+            CoinCollected?.Invoke(_coins);
             Destroy(collision.gameObject);
         }
     }

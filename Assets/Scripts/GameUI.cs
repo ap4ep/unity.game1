@@ -11,7 +11,7 @@ public class GameUI : MonoBehaviour
 
     private void Start()
     {
-        _playerController.CoinCollect += ShowCoins;
+        _playerController.CoinCollected += ShowCoins;
     }
 
     private void ShowCoins(int coins)
