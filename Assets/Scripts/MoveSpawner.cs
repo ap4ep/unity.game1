@@ -12,8 +12,7 @@ public class MoveSpawner : MonoBehaviour
 
     private void Update()
     {
-        if(gameObject.activeSelf == true)
-            Step();
+        Step();
     }
 
     private void ChangePosition()
